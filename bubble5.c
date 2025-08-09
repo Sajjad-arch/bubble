@@ -2,35 +2,39 @@
 be statically stored. Sort the array using Bubble sort in
 ascending order according to their ID number.*/
 #include <stdio.h>
+#include <string.h>
 
-struct student
- {
-     char name[50];
-     int id;
- };
 
 int main(void)
 
 
 {
-    struct student a[5]={{"A",4},{"B",1},{"C",2},{"J",5},
-        {"S",20}};
-    int i,j;
 
-   struct student t;
-
-
+     int i,j;
+     int n=5;
+     int id[5]={6,4,9,3,2};
+     char name[][20]={"K","A","W","T","G"};
 
 
     for(i=0; i<4; i++)
     {
         for(j=0; j<4-i; j++)
         {
-            if(a[j].id>a[j+1].id)
+            if(id[j]>id[j+1])  // FOR ID SWAP
             {
-                t=a[j];
-                a[j]=a[j+1];
-                a[j+1]=t;
+                int tid=id[j];
+                id[j]=id[j+1];
+                id[j+1]=tid;
+
+
+                char tname[20];   //FOR NAME SWAP
+                strcpy(tname, name[j]);
+                strcpy(name[j], name[j+1]);
+                strcpy(name[j+1], tname);
+
+
+
+
             }
         }
     }
@@ -39,7 +43,7 @@ int main(void)
      printf("THE UPDATER ARRAY IS: \n");
     for(i=0; i<5; i++)
     {
-        printf("%s  - %d \n",a[i].name, a[i].id);
+        printf("%d  - %s \n",id[i] , name[i]);
     }
 
     return 0;
